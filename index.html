@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div class="container">
+    <div class="form-container">
+     <form id="theForm" >
+        <label for="pname">Product Name: </label>
+        <input type="text" id="pname" name="pname"/><br>
+        <label for="price">Selling Price: </label>
+        <input type="number" id="price" name="price"/><br>
+        <label for="category">
+            Choose a Category: 
+        </label>
+         <select name="category" id="category">
+            <option selected disabled>Choose an Option</option>
+            <option value="Electronic">Electronics</option>
+            <option value="Food">Food</option>
+            <option value="Skincare">Skincare</option>
+         </select>
+         <br>
+         <button type="submit" id="btn">Add Product</button>
+       
+
+        
+
+     </form>
+    </div>
+    <div class="Products">
+        <h2>Products</h2>
+        <div class="electronic">
+            <h3>Electronic Items</h3>
+            <ul id="elec-adder">
+
+            </ul>
+
+        </div>
+        <div class="food">
+            <h3>Food Items</h3>
+            <ul id="food-adder"></ul>
+
+        </div>
+        <div class="skincare">
+            <h3>Skincare Items</h3>
+
+            <ul id="skin-adder"></ul>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="ecom.js"></script>
+    
+</body>
+</html>
