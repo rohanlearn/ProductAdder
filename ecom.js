@@ -1,4 +1,4 @@
-url="https://crudcrud.com/api/a772880837b24569bab9f734ee7a7efb"
+url="https://crudcrud.com/api/3312c85f2e324bd99ab412513528b872"
 
 const form = document.getElementById("theForm")
 const elecAdder = document.getElementById("elec-adder")
