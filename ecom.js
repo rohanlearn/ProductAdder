@@ -1,4 +1,4 @@
-url="https://crudcrud.com/api/3312c85f2e324bd99ab412513528b872"
+url="https://crudcrud.com/api/ee1714baa73f48d18e4d6d9da2fae2f6"
 
 const form = document.getElementById("theForm")
 const elecAdder = document.getElementById("elec-adder")
@@ -6,62 +6,57 @@ const foodAdder = document.getElementById("food-adder")
 const skinAdder = document.getElementById("skin-adder")
 
 form.addEventListener('submit',addProduct)
+window.addEventListener("DOMContentLoaded",loader)
 
-window.onload=loader()
 
-function loader(e){
-    axios.get(`${url}/Products`)
-    .then((res)=>{
-
-        let data = res.data
-        if(data.length>1){
-            for(i of data){
-                addToSite(i)
-            }
-        }   
-    })
-    .catch(function(error){
-        alert(error)
-        
-    });
+async function loader() {
     
+    try {
+      const res = await axios.get(`${url}/Products`);
+      const data = res.data;
+      
+      if (data.length > 0) {
+        for (const item of data) {
+          addToSite(item);
+        }
+      }
+    } catch (error) {
+      alert(error);
+    }
+  }
 
-}
-
-function addProduct(event){
-    event.preventDefault()
-   let pnInput = document.getElementById("pname")
-   let pname = pnInput.value
-   let pInput = document.getElementById("price")
-   let price = pInput.value
-   let catInput = document.getElementById("category")
-   let category = catInput.options[catInput.options.selectedIndex].text
-   if(category=="Choose an Option"){
-    alert("please choose an option!!")
-    return
-   };
-
-   let obj = {
-    productName:pname,
-    price:price,
-    category:category
-   };
-   axios.post(`${url}/Products`,obj)
-   .then((result) => {
-    a = result.data
-    addToSite(a);
-    
-    
-   }).catch((err) => {
-    alert(err)
-    
-   });
-   pInput.value=""
-   pnInput.value=""
-   
-
-   
-}
+  async function addProduct(event) {
+    event.preventDefault();
+  
+    const pnInput = document.getElementById("pname");
+    const pname = pnInput.value;
+    const pInput = document.getElementById("price");
+    const price = pInput.value;
+    const catInput = document.getElementById("category");
+    const category = catInput.options[catInput.options.selectedIndex].text;
+  
+    if (category === "Choose an Option") {
+      alert("Please choose an option!");
+      return;
+    }
+  
+    const obj = {
+      productName: pname,
+      price: price,
+      category: category
+    };
+  
+    try {
+      const result = await axios.post(`${url}/Products`, obj);
+      const data = result.data;
+      addToSite(data);
+    } catch (err) {
+      alert(err);
+    }
+  
+    pInput.value = "";
+    pnInput.value = "";
+  }
 
 function addToSite(object){
    
